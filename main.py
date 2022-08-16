@@ -29,7 +29,7 @@ def main():
         if event == '-Graficar-':
             input = values['-Bits-']
             bits = codificacion.Validate(input)
-            bits = codificacion.NZRI(bits)
+            bits = codificacion.RZ_Bipolar(bits)
             if bits is not None:
                 print('valores correctos')
                 draw_figure(window['-Canva-'].TKCanvas, create_step_plot(bits))

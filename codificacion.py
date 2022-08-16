@@ -36,14 +36,30 @@ def NZRI(input):
             elif state == 'Up':
                 bits.append(1)
     return bits
-
-# RZ
+# RZ Unipolar
 def RZ_Unipolar(input):
     bits = []
     for i in input:
         if i == '1':
             bits.append(1)
             bits.append(0)
+        else:
+            bits.append(0)
+    return bits
+# RZ Bipolar
+def RZ_Bipolar(input):
+    bits = []
+    state = 'Down'
+    for i in input:
+        if i == '1':
+            if state == 'Down':
+                state = 'Up'
+                bits.append(1)
+                bits.append(0)
+            elif state == 'Up':
+                state = 'Down'
+                bits.append(-1)
+                bits.append(0)
         else:
             bits.append(0)
     return bits
