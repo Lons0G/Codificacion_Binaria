@@ -6,7 +6,7 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
 def create_step_plot(y):
     plt.step(np.arange(len(y)), y, label = 'pre default', where = 'mid')
-    plt.gca().invert_yaxis()
+    #plt.gca().invert_yaxis()
     return plt.gcf()
 
 def draw_figure(canvas, figure):
@@ -29,6 +29,7 @@ def main():
         if event == '-Graficar-':
             input = values['-Bits-']
             bits = codificacion.Validate(input)
+            bits = codificacion.RZ_Unipolar(bits)
             if bits is not None:
                 print('valores correctos')
                 draw_figure(window['-Canva-'].TKCanvas, create_step_plot(bits))
