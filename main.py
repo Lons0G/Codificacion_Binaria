@@ -1,16 +1,8 @@
 import PySimpleGUI as sg
 import numpy as np
 import matplotlib.pyplot as plt
+import codificacion
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
-
-def Validate(input):
-    bits = []
-    for i in input:
-        if i == '0' or i == '1':   
-            bits.append(i)
-        else:
-            return None
-    return bits
 
 def create_step_plot(y):
     plt.step(np.arange(len(y)), y, label = 'pre default', where = 'mid')
@@ -36,7 +28,7 @@ def main():
             break
         if event == '-Graficar-':
             input = values['-Bits-']
-            bits = Validate(input)
+            bits = codificacion.Validate(input)
             if bits is not None:
                 print('valores correctos')
                 draw_figure(window['-Canva-'].TKCanvas, create_step_plot(bits))
