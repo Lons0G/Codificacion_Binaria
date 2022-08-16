@@ -26,11 +26,15 @@ def NZRI(input):
                 state = 'Up'
                 bits.append(0)
                 bits.append(1)
-            else:
+            elif state == 'Up':
+                state = 'Down'
                 bits.append(1)
                 bits.append(0)
-        else:
-            bits.append(1)
+        elif i == '0':
+            if state == 'Down':
+                bits.append(0)
+            elif state == 'Up':
+                bits.append(1)
     return bits
 
 # RZ
@@ -47,4 +51,3 @@ def RZ_Unipolar(input):
 # MANCHESTER DIFERENCIAL
 # AMI
 
-print(NZRI(['0','1','0','1','1','1','0','0','1']))
