@@ -66,12 +66,14 @@ def RZ_Bipolar(input):
 # MANCHESTER
 def Manchester(input):
     bits = []
-    if input == '0':
-        bits.append(0)
-        bits.append(1)
-    else:
-        bits.append(1)
-        bits.append(0)
+    for i in input:
+        if i == '0':
+            bits.append(0)
+            bits.append(1)
+        else:
+            bits.append(1)
+            bits.append(0)
+    return bits
 # MANCHESTER DIFERENCIAL
 # AMI
 
