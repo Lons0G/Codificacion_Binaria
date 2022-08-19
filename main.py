@@ -64,5 +64,5 @@ def main():
             
     _vars['window'].close()
 if __name__ == '__main__':
-    create_step_plot([1, 2, 3, 4], False)
+    create_step_plot([], False)
     main()
