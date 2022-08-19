@@ -40,7 +40,7 @@ def draw_figure(canvas, figure):
     figure_canvas_agg.get_tk_widget().pack(side='top', fill='both', expand=1)
     return figure_canvas_agg
 
-encoding = ['NRZ Bipolar', 'NRZ-I', 'RZ Unipolar', 'RZ Bipolar', 'Manchester']
+encoding = ['NRZ Unipolar', 'NRZ Bipolar', 'NRZ-I', 'RZ Unipolar', 'RZ Bipolar', 'Manchester']
 layout = [ 
     [sg.Text('Bits'), sg.Input(key = '-Bits-'), sg.Combo(encoding, default_value = encoding[0], key = '-Combo-'), sg.Button('Graficar', key = '-Graficar-')],
     [sg.Canvas(size = (500, 500), key = '-Canva-')]
@@ -57,7 +57,6 @@ def main():
             bits = codificacion.Validate(input)
             if bits is not None:
                 bits, negative = codificacion.Encoding_Method(bits, values['-Combo-'])
-                print('valores correctos')
                 update_step_plot(bits, negative)
             else:
                 sg.popup('Valores Incorrectos')

@@ -21,6 +21,18 @@ def Encoding_Method(input, encoding):
         bits, negative = RZ_Bipolar(input)
     elif encoding == 'Manchester':
         bits, negative = Manchester(input)
+    elif encoding == 'NRZ Unipolar':
+        bits, encoding = NRZ_Unipolar(input)
+    return bits, negative
+# NRZ Unipolar
+def NRZ_Unipolar(input):
+    bits = []
+    negative = False
+    for i in input:
+        if i == '0':
+            bits.append(0)
+        else:
+            bits.append(1)
     return bits, negative
 # NRZ-BIPOLAR
 def NRZ_Bipolar(input):
