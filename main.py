@@ -6,6 +6,9 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
 def create_step_plot(y):
     plt.step(np.arange(len(y)), y, label = 'pre default', where = 'mid')
+    plt.yticks([0, 1])
+    ax = plt.gca()
+    ax.axes.xaxis.set_visible(False)
     #plt.gca().invert_yaxis()
     return plt.gcf()
 
