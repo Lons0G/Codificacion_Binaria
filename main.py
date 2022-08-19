@@ -22,8 +22,9 @@ def draw_figure(canvas, figure):
     return figure_canvas_agg
 
 def main():
+    encoding = ['NRZ Bipolar', 'NRZ-I', 'RZ Unipolar', 'RZ Bipolar', 'Manchester']
     layout = [ 
-        [sg.Text('Bits'), sg.Input(key = '-Bits-'), sg.Button('Graficar', key = '-Graficar-')],
+        [sg.Text('Bits'), sg.Input(key = '-Bits-'), sg.Combo(encoding, default_value = encoding[0], key = '-Combo-'), sg.Button('Graficar', key = '-Graficar-')],
         [sg.Canvas(size = (500, 500), key = '-Canva-')]
     ]
 
@@ -35,10 +36,10 @@ def main():
         if event == '-Graficar-':
             input = values['-Bits-']
             bits = codificacion.Validate(input)
-            bits = codificacion.Manchester(bits)
+            bits, negative = codificacion.Encoding_Method(bits, values['-Combo-'])
             if bits is not None:
                 print('valores correctos')
-                draw_figure(window['-Canva-'].TKCanvas, create_step_plot(bits))
+                draw_figure(window['-Canva-'].TKCanvas, create_step_plot(bits, negative))
             else:
                 print('valores incorrectos')
             
