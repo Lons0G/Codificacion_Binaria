@@ -55,13 +55,12 @@ def main():
         if event == '-Graficar-':
             input = values['-Bits-']
             bits = codificacion.Validate(input)
-            bits, negative = codificacion.Encoding_Method(bits, values['-Combo-'])
             if bits is not None:
+                bits, negative = codificacion.Encoding_Method(bits, values['-Combo-'])
                 print('valores correctos')
                 update_step_plot(bits, negative)
             else:
-                print('valores incorrectos')
-            
+                sg.popup('Valores Incorrectos')
     _vars['window'].close()
 if __name__ == '__main__':
     create_step_plot([], False)
