@@ -4,9 +4,12 @@ import matplotlib.pyplot as plt
 import codificacion
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
-def create_step_plot(y):
+def create_step_plot(y, negative = False):
     plt.step(np.arange(len(y)), y, label = 'pre default', where = 'mid')
-    plt.yticks([0, 1])
+    if negative == False:
+        plt.yticks([0, 1])
+    else:
+        plt.yticks([-1, 0, 1])
     ax = plt.gca()
     ax.axes.xaxis.set_visible(False)
     #plt.gca().invert_yaxis()
